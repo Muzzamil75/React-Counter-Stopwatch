@@ -26,7 +26,6 @@ export default class Stopwatch extends Component {
 
     handleStart = () => {
 
-        //checking true ==true
         if (!this.state.running  )
         {
             this.incrementer = setInterval(() =>
@@ -39,7 +38,6 @@ export default class Stopwatch extends Component {
     }
     handleStop =() =>
     {
-        //setting this.state to a variable
         clearInterval(this.incrementer);
         this.setState({ running: false })
     }
@@ -59,19 +57,19 @@ export default class Stopwatch extends Component {
     render() {
         return (
             <React.Fragment>
-                <button onClick={this.handleReset} className="btn btn-danger "  >Reset </button>
-                <div style={{ marginLeft: 30 }} >
+                <button onClick={this.handleReset} className="btn m-2 btn-danger "  >Reset </button>
+                <div style={{ marginTop:10 }} >
 
-                  {formattedSeconds(this.state.timer)}
+                    <div style={{ fontSize: 20,color: 'darkblue'}}>
+                      {formattedSeconds(this.state.timer)}
 
-                    <button onClick={this.handleLabClick} className="badge m-6 badge-primary">Lapse </button>
-                    {this.handleLapse}
-                    <button onClick={this.handleStop} className="badge m-6 badge-primary">Stop </button>
-
-
-                    <button onClick={this.handleStart} className="badge m-6 badge-warning"> Start Timer</button>
-
-                    <ul>
+                    </div>
+                    <div>
+                        <button onClick={this.handleLabClick} className="badge m-1 p-2 badge-primary">Lapse </button>
+                        <button onClick={this.handleStop} className="badge m-1 p-2 badge-danger">Stop </button>
+                        <button onClick={this.handleStart} className="badge m-1 p-2 badge-success"> Start Timer</button>
+                    </div>
+                    <ul style={{flexDirection:'row'}}>
                         {this.state.laps.map((lap, i) =>
                             <li key={i} className="stopwatch-lap"><strong>{"Lap No " + (i + 1) + ":   "}</strong> {formattedSeconds(this.state.laps[i])}</li>)
                         }
