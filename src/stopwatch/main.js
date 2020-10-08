@@ -47,8 +47,7 @@ export default class Stopwatch extends Component {
     handleReset = () => {
 
         clearInterval(this.Initial);
-        this.setState({timer : 0})
-        this.setState({laps: []});
+        this.setState({timer : 0,laps:[]})
     }
     handleLabClick = () => {
         this.setState({
